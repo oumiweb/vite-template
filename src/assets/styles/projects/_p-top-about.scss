@@ -1,0 +1,130 @@
+@use "../global" as *;
+
+.p-top-about {
+  padding-block: calc(80 * var(--to-rem)) calc(60 * var(--to-rem));
+}
+
+.p-top-about__inner {
+  max-width: calc(1440 * var(--to-rem));
+  text-align: center;
+}
+
+.p-top-about__label {
+  font-size: calc(14 * var(--to-rem));
+  font-weight: 500;
+  line-height: 1.75;
+  color: #0a5c9c;
+  letter-spacing: 0.05em;
+
+  @include mq(md) {
+    font-size: calc(16 * var(--to-rem));
+  }
+}
+
+.p-top-about__title {
+  margin-block-start: calc(16 * var(--to-rem));
+  font-size: calc(20 * var(--to-rem));
+  font-weight: 500;
+  line-height: 1.6;
+  color: #e68a00;
+  letter-spacing: 0.05em;
+
+  @include mq(md) {
+    font-size: calc(24 * var(--to-rem));
+  }
+}
+
+.p-top-about__text {
+  margin-block-start: calc(24 * var(--to-rem));
+  font-size: calc(14 * var(--to-rem));
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: 0.05em;
+
+  @include mq(md) {
+    font-size: calc(16 * var(--to-rem));
+  }
+}
+
+.p-top-about__images {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: calc(20 * var(--to-rem));
+  align-items: center;
+  margin-block-start: calc(74 * var(--to-rem));
+
+  @include mq(md) {
+    flex-direction: row;
+    gap: calc(24 * var(--to-rem));
+    justify-content: center;
+  }
+}
+
+.p-top-about__image {
+  position: relative;
+  z-index: 1;
+  width: calc(260 * var(--to-rem));
+  overflow: hidden;
+  border-radius: calc(8 * var(--to-rem));
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+
+  @include mq(md) {
+    width: calc(300 * var(--to-rem));
+  }
+}
+
+.p-top-about__image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.p-top-about__image.p-top-about__image--01 {
+  transform: rotate(-5deg);
+}
+
+.p-top-about__image.p-top-about__image--02 {
+  transform: rotate(3deg);
+}
+
+.p-top-about__image.p-top-about__image--03 {
+  transform: rotate(-2deg);
+}
+
+.p-top-about__deco {
+  position: absolute;
+}
+
+.p-top-about__deco.p-top-about__deco--hata {
+  inset-block-start: calc(-10 * var(--to-rem));
+  inset-inline-start: 10%;
+  width: calc(50 * var(--to-rem));
+
+  @include mq(md) {
+    inset-block-start: calc(-15 * var(--to-rem));
+    inset-inline-start: 15%;
+    width: calc(60 * var(--to-rem));
+  }
+}
+
+.p-top-about__deco.p-top-about__deco--hikouki {
+  inset-block-start: calc(-20 * var(--to-rem));
+  inset-inline-end: 5%;
+  width: calc(60 * var(--to-rem));
+
+  @include mq(md) {
+    inset-block-start: calc(-30 * var(--to-rem));
+    inset-inline-end: 10%;
+    width: calc(80 * var(--to-rem));
+  }
+}
+
+.p-top-about__line {
+  position: absolute;
+  inset-block-start: calc(-178 * var(--to-rem));
+  inset-inline-start: calc(-161 * var(--to-rem));
+  z-index: 0;
+  width: calc(1109 * var(--to-rem));
+  height: calc(572 * var(--to-rem));
+}
