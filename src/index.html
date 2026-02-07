@@ -3,35 +3,74 @@
   {{> head }}
 
   <body>
-    {{> p-header}}
-    <main class="l-top">
-      {{> p-mv}}
+    {{> header}}
+    <main class="top-page">
+      <section class="mv">
+        <div class="mv__inner">
+          <div class="mv__title-wrap">
+            <h2 class="mv__main-title">メインタイトルだよ</h2>
+            <p class="mv__sub-title">
+              ここにサブタイトルが入ります。<br />ここにサブタイトルが入ります。ここにサブタイトルが入ります。<br />ここにサブタイトルが入ります。
+            </p>
+          </div>
+          <div class="mv__splide splide js-mv-splide" aria-label="main-visual">
+            <div class="splide__track">
+              <ul class="splide__list">
+                <li class="splide__slide">
+                  <div class="splide__slide-image">
+                    <picture>
+                      <source srcset="/assets/images/image_mv_01.webp" type="image/webp" />
+                      <img src="/assets/images/image_mv_01.png" width="977" height="1800" alt="" fetchpriority="high" />
+                    </picture>
+                  </div>
+                </li>
+                <li class="splide__slide">
+                  <div class="splide__slide-image">
+                    <picture>
+                      <source srcset="/assets/images/image_mv_02.webp" type="image/webp" />
+                      <img src="/assets/images/image_mv_02.png" width="977" height="1800" alt="" />
+                    </picture>
+                  </div>
+                </li>
+                <li class="splide__slide">
+                  <div class="splide__slide-image">
+                    <picture>
+                      <source srcset="/assets/images/image_mv_03.webp" type="image/webp" />
+                      <img src="/assets/images/image_mv_03.png" width="977" height="1800" alt="" />
+                    </picture>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <section class="p-sample l-top__sample">
-        <div class="p-sample__inner l-inner">
-          {{> c-section-title title="sample" position="center"}}
-          <div class="p-sample__link-wrap">
-            <a class="p-sample__link" href="/_components.html">パーツ一覧へ</a>
+      <section class="sample top-page__sample">
+        <div class="sample__inner inner">
+          {{> section-title title="sample" position="center"}}
+          <div class="sample__link-wrap">
+            <a class="sample__link" href="/_components.html">パーツ一覧へ</a>
             <p>↑のページで共通パーツを制作してください</p>
           </div>
-          <div class="p-sample__link-wrap">
-            <a class="p-sample__link" href="/contact/">問い合わせへ</a>
+          <div class="sample__link-wrap">
+            <a class="sample__link" href="/contact/">問い合わせへ</a>
           </div>
 
-          <hr class="p-sample__divider" />
+          <hr class="sample__divider" />
 
           <p>背景画像の読み込み</p>
-          <div class="p-sample__bg"></div>
+          <div class="sample__bg"></div>
 
-          <hr class="p-sample__divider" />
+          <hr class="sample__divider" />
 
           <p>通常画像の読み込み(imgの下部をマスクでフェードかけてます)</p>
-          <div class="p-sample__image">
+          <div class="sample__image">
             <img src="/assets/images/image_sample.webp" width="512" height="512" alt="猫の画像" />
           </div>
         </div>
       </section>
     </main>
-    {{> p-footer}}
+    {{> footer}}
   </body>
 </html>

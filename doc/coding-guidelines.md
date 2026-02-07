@@ -6,7 +6,7 @@
 
 - **ビルドツール**: Vite 5.0.13
 - **パッケージマネージャー**: **yarn のみ使用**（npm禁止）
-- **CSS設計**: FLOCSS
+- **CSS設計**: BEM
 - **テンプレートエンジン**: Handlebars
 - **JavaScript**: ESモジュール (ES6+)
 
@@ -23,30 +23,29 @@
   - NG: `&copy;`
   - OK: `©`
 
-### BEM/FLOCSS命名規則
+### BEM命名規則
 
-クラス名は以下の接頭辞を使用し、BEM記法に従う：
+クラス名はBEM記法に従う：
 
-- **`l-`**: Layout（レイアウト）
-- **`c-`**: Component（再利用可能コンポーネント）
-- **`p-`**: Project（特定ページ専用）
-- **`u-`**: Utility（単一目的クラス）
+- **Block**: 独立したコンポーネント（例: `.header`, `.card`, `.form`）
+- **Element**: ブロックの構成要素（例: `.header__nav`, `.card__title`）
+- **Modifier**: バリエーション（例: `.button--large`, `.card__image--round`）
 
 ```html
 <!-- 良い例 -->
-<header class="p-header l-header">
-  <div class="l-inner">
-    <nav class="p-header__nav">
-      <a href="/" class="p-header__nav-item">ホーム</a>
+<header class="header">
+  <div class="inner">
+    <nav class="header__nav">
+      <a href="/" class="header__nav-item">ホーム</a>
     </nav>
   </div>
 </header>
 
-<button class="c-button c-button--primary">送信</button>
+<button class="button button--primary">送信</button>
 
-<!-- 悪い例: 省略形や接頭辞なし -->
+<!-- 悪い例: 省略形 -->
 <div class="btn">クリック</div>
-<!-- NG: 省略、接頭辞なし -->
+<!-- NG: 省略 -->
 <div class="button-primary">送信</div>
 <!-- NG: BEM記法違反 -->
 ```
@@ -81,19 +80,19 @@
 
 ```html
 <!-- src/index.html -->
-{{> p-header}}
+{{> header}}
 
-<main class="l-main">
+<main>
   <h1>{{page.title}}</h1>
 </main>
 
-{{> p-footer}}
+{{> footer}}
 ```
 
 コンポーネントファイル名は対応するクラス名と一致させる：
 
-- `src/components/p-header.html` → `.p-header`
-- `src/components/c-button.html` → `.c-button`
+- `src/components/header.html` → `.header`
+- `src/components/button.html` → `.button`
 
 ### アクセシビリティ
 
@@ -119,22 +118,13 @@
 
 ## CSS/SCSS
 
-### FLOCSS階層構造
+### ディレクトリ構造
 
 ```scss
 // src/assets/styles/style.scss
 @use "foundation"; // リセット、ベーススタイル
 @use "global"; // 変数、関数、mixins
-
-// layoutディレクトリ内のファイルを直接インポート
-@use "layouts/**";
-
-// components と projects
-@use "components/**";
-@use "projects/**";
-
-// utilityクラス（全てのファイル）をワイルドカードで読み込み
-@use "utilities/**";
+@use "blocks/**"; // 全BEMブロック
 ```
 
 各ファイルでは`@use "../global" as *;`でグローバル変数とmixinsを読み込む：
@@ -142,7 +132,7 @@
 ```scss
 @use "../global" as *;
 
-.p-header {
+.header {
   color: var(--color-text);
 
   @include mq("md") {
@@ -167,7 +157,7 @@
 
 ```scss
 // ✅ 良い例
-.c-card {
+.card {
   padding: calc(20 * var(--to-rem)) calc(30 * var(--to-rem));
   margin-block-start: calc(40 * var(--to-rem));
   color: var(--color-text);
@@ -194,7 +184,7 @@
 }
 
 // ✅ 子要素のセレクタは別定義（ネストしない）
-.p-header__hamburger span {
+.header__hamburger span {
   display: block;
 
   // 擬似要素・擬似クラスはネスト可
@@ -204,7 +194,7 @@
 }
 
 // ✅ 擬似クラスセレクタと子要素の組み合わせも別定義
-.p-header__hamburger.is-open span {
+.header__hamburger.is-open span {
   &:nth-of-type(1) {
     top: 0;
     rotate: 45deg;
@@ -213,7 +203,6 @@
 
 // ❌ 悪い例
 .card {
-  // NG: 接頭辞なし
   padding: 20px; // NG: px直接指定
   margin-bottom: 40px; // NG: 論理プロパティ未使用
 
@@ -229,11 +218,11 @@
 }
 
 // ✅ BEM要素は別々に定義
-.c-card {
+.card {
   padding: calc(20 * var(--to-rem));
 }
 
-.c-card__item {
+.card__item {
   display: block;
 }
 ```
@@ -242,17 +231,17 @@
 
 ```scss
 // Block
-.c-button {
+.button {
   padding: calc(14 * var(--to-rem)) calc(60 * var(--to-rem));
   background-color: var(--color-primary);
 }
 
 // Modifier
-.c-button.c-button--large {
+.button.button--large {
   padding: calc(20 * var(--to-rem)) calc(80 * var(--to-rem));
 }
 
-.c-button.c-button--outline {
+.button.button--outline {
   background-color: transparent;
   border: 1px solid var(--color-primary);
 }
@@ -265,7 +254,7 @@
 ```scss
 @use "../global" as *;
 
-.c-section {
+.section {
   padding-block: calc(40 * var(--to-rem));
 
   @include mq("md") {
@@ -281,29 +270,19 @@
 - `lg`: 1024px以上
 - `xl`: 1440px以上
 
-```scss
-.p-header {
-  height: var(--header-height);
-
-  @include mq("md") {
-    --header-height: 80px;
-  }
-}
-```
-
 ### レイアウト
 
 - **等間隔配置**: `gap`を使用
 - **比率管理**: `aspect-ratio`を使用
 
 ```scss
-.c-card-list {
+.card-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: calc(30 * var(--to-rem));
 }
 
-.c-thumbnail {
+.thumbnail {
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
@@ -324,56 +303,6 @@ import "./_drawer.js";
 import "./_mv-slider.js";
 import "./_viewport.js";
 import "./_form-validation.js";
-```
-
-**モジュール構造**:
-
-```javascript
-// === 定数定義 ===
-const BREAKPOINTS = {
-  TABLET: 768,
-};
-
-const ANIMATION = {
-  DURATION: 500,
-};
-
-// === ユーティリティ関数 ===
-function throttle(callback, delay = 100) {
-  // ...
-}
-
-// === 初期化 ===
-document.addEventListener("DOMContentLoaded", function () {
-  // 初期化処理
-});
-```
-
-### 画像インポート
-
-Vite環境では画像をインポートして使用：
-
-```javascript
-import heroImage from "/assets/images/hero.png";
-
-const img = document.createElement("img");
-img.src = heroImage;
-img.alt = "ヒーロー画像";
-```
-
-### イベントリスナー
-
-適切なクリーンアップを行う：
-
-```javascript
-const handleClick = () => {
-  console.log("クリックされました");
-};
-
-button.addEventListener("click", handleClick);
-
-// 必要に応じてクリーンアップ
-// button.removeEventListener('click', handleClick);
 ```
 
 ### アクセシビリティ属性の動的更新
@@ -401,23 +330,10 @@ drawer.setAttribute("aria-hidden", "true");
 - **用途**: OGP画像、favicon など
 - **特徴**: URLが変わらない（ハッシュなし）
 
-```
-src/public/images/
-  ├── ogp.png
-  └── favicon.ico
-```
-
 #### 2. `/src/assets/images/` - コンテンツ画像
 
 - **用途**: サイト内コンテンツ画像
 - **特徴**: ビルド時にハッシュ付与（キャッシュバスティング）
-
-```
-src/assets/images/
-  ├── bg_sample.png
-  ├── image_mv_01.webp
-  └── icon_arrow.svg
-```
 
 ### ファイル命名規則
 
@@ -426,151 +342,17 @@ src/assets/images/
 - **使用可能文字**: 英小文字・数字・ハイフン・アンダースコア
 - **ページ別フォルダ非推奨**: すべて`images/`直下
 
-```
-✅ 良い例
-bg_sample.png
-image_mv_01.webp
-icon_arrow.svg
-thumbnail_product_01.jpg
-
-❌ 悪い例
-BgSample.png        // 大文字使用
-image-mv-01.webp    // ハイフン使用（アンダースコア推奨）
-top/hero.png        // フォルダ分け
-img01.jpg           // カテゴリなし
-```
-
-[参考記事](https://webnaut.jp/technology/20210910-3953/)
-
-## パフォーマンス最適化
-
-### Google Fontsの最適化読み込み
-
-FOUTを防ぐため、以下の方法で読み込み：
-
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  rel="preload"
-  as="style"
-  fetchpriority="high"
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Gotu&display=swap"
-/>
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Gotu&display=swap"
-  media="print"
-  onload='this.media="all"'
-/>
-```
-
 ## 開発コマンド
 
 ### 必須: yarnを使用
 
 ```bash
-# 依存関係インストール
-yarn
-
-# 開発サーバー起動
-yarn dev  # → http://localhost:5173
-
-# ビルド（自動でformat実行）
-yarn build
-
-# プレビュー
-yarn preview
-
-# フォーマット（lint-fix + prettier-fix）
-yarn format
+yarn          # 依存関係インストール
+yarn dev      # 開発サーバー起動 → http://localhost:5173
+yarn build    # ビルド（自動でformat実行）
+yarn preview  # プレビュー
+yarn format   # フォーマット（lint-fix + prettier-fix）
 ```
-
-### フォーマット・Lint
-
-コミット前に必ず実行：
-
-```bash
-# まとめて実行
-yarn format
-
-# 個別実行
-yarn _lint        # チェックのみ
-yarn _lint-fix    # 自動修正
-yarn _prettier    # チェックのみ
-yarn _prettier-fix # 自動修正
-```
-
-## 納品時の流れ
-
-納品時やサーバーアップ時は、必ず以下の手順に従ってください。
-
-### 1. ビルド前の確認
-
-```bash
-# フォーマットを実行（自動でlint + prettierが実行される）
-yarn format
-
-# エラーがないことを確認
-yarn _lint
-yarn _prettier
-```
-
-### 2. ビルド実行
-
-```bash
-# ビルドを実行（自動でformatも実行される）
-yarn build
-```
-
-ビルドが成功すると、`dist`フォルダに以下の構造で成果物が出力されます：
-
-```
-dist/
-├── assets/
-│   ├── images/     # 画像ファイル（ハッシュ付与）
-│   ├── js/         # JavaScriptファイル
-│   └── style/      # CSSファイル
-├── contact/        # ページファイル
-├── index.html      # メインページ
-└── ...
-```
-
-### 3. ビルド成果物の確認
-
-```bash
-# distフォルダの内容を確認
-ls -la dist/
-
-# ローカルでプレビュー（任意）
-yarn preview
-```
-
-### 4. サーバーへのアップロード
-
-**重要**: 以下のファイルのみをサーバーにアップロードしてください。
-
-- ✅ **`dist`フォルダ内のすべてのファイル**
-- ❌ **`src`フォルダはアップロード不要**（開発用ファイルのため）
-- ❌ **`node_modules`、`.git`などはアップロード不要**
-
-### 5. 納品チェックリスト
-
-納品前に以下を確認してください：
-
-- [ ] `yarn build`がエラーなく完了している
-- [ ] `dist`フォルダに必要なファイルがすべて出力されている
-- [ ] ローカルプレビュー（`yarn preview`）で表示が正常である
-- [ ] 画像ファイルが正しく読み込まれている
-- [ ] CSS/JavaScriptが正しく読み込まれている
-- [ ] すべてのページが正常に表示される
-
-### 注意事項
-
-- ⚠️ **開発用ファイル（`src`フォルダ）は絶対にアップロードしないでください**
-- ⚠️ **`dist`フォルダ内のファイルのみ**をアップロードしてください
-- ✅ ビルド後は`yarn preview`でローカル確認が可能です
-- ✅ ビルド時に自動でフォーマットが実行されるため、納品前の手動フォーマットは不要です
 
 ## その他のルール
 
@@ -602,11 +384,9 @@ refactor: コード整理
 - ✅ 論理プロパティ（`margin-block-start`, `padding-inline`など）
 - ✅ `loading="lazy"`（MV以外の画像）
 - ✅ `fetchpriority="high"`（LCP画像）
-- ✅ AVIF対応（`<picture>`要素で元画像にフォールバック）
 - ✅ WebPは全ブラウザ対応のため直接使用可能
 - ✅ ESモジュール
 - ✅ アクセシビリティ属性（`aria-*`）
-- ✅ CSS/フォントの非同期読み込み
 - ✅ コミット前の`yarn format`実行
 
 ---

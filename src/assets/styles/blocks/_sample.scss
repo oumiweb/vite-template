@@ -1,0 +1,75 @@
+@use "../global" as *;
+
+/* 下記サンプル 構築時は削除してください */
+.sample {
+  padding-block: calc(40 * var(--to-rem));
+}
+
+.sample__link {
+  display: inline-block;
+  margin-block-start: calc(40 * var(--to-rem));
+  font-size: calc(24 * var(--to-rem));
+  text-decoration: underline;
+}
+
+@media (any-hover: hover) {
+  .sample__link:hover {
+    text-decoration: none;
+  }
+}
+
+.sample__bg {
+  width: 300px;
+  aspect-ratio: 1/1;
+  background-image: image-set(url("/assets/images/bg_sample.webp") type("image/webp"), url("/assets/images/bg_sample.png") type("image/png"));
+  background-size: contain;
+}
+
+.sample__image {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+}
+
+.sample__image img {
+  object-fit: cover;
+  mask-image: linear-gradient(to bottom, rgb(255 255 255 / 100%) 0%, rgb(255 255 255 / 10%) 100%);
+}
+
+.sample__text-block {
+  margin-block: calc(40 * var(--to-rem));
+}
+
+.sample__head {
+  font-size: 24px;
+
+  @include mq(md) {
+    font-size: 32px;
+  }
+}
+
+.sample__text {
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+.sample__title2 {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+
+  @include mq(md) {
+    font-size: 24px;
+  }
+}
+
+.sample__divider {
+  margin-block: calc(16 * var(--to-rem)) calc(32 * var(--to-rem));
+}
+
+.sample__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(64px, 100%), 1fr));
+  gap: calc(16 * var(--to-rem));
+}

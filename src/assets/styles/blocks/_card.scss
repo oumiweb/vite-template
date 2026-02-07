@@ -1,0 +1,77 @@
+@use "../global" as *;
+
+.card {
+  overflow: hidden;
+  background-color: var(--color-white);
+  border-radius: 12px;
+  transition: scale 0.3s ease;
+  container-type: inline-size;
+  container-name: card;
+}
+
+.card__body {
+  display: grid;
+  grid-template-columns: minmax(min(calc(400 * var(--to-rem)), 100%), 1fr) auto;
+
+  // 700px以下の場合はカードを縦に並べる
+  @container card (inline-size <= 700px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (any-hover: hover) {
+  .card:has(.button:hover) .card__image img {
+    scale: 1.1;
+  }
+}
+
+.card__image {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 0.4s ease;
+}
+
+.card__content {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: calc(16 * var(--to-rem));
+  padding: calc(24 * var(--to-rem));
+}
+
+.card__title {
+  margin: 0;
+  font-size: calc(20 * var(--to-rem));
+  font-weight: var(--fw-bold);
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+@include mq(md) {
+  .card__title {
+    font-size: calc(24 * var(--to-rem));
+  }
+}
+
+.card__text {
+  margin: 0;
+  font-size: calc(14 * var(--to-rem));
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}
+
+@include mq(md) {
+  .card__text {
+    font-size: calc(16 * var(--to-rem));
+  }
+}
+
+.card__button {
+  align-self: end;
+}

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Vite-based static site development template using FLOCSS + BEM + Handlebars. The project is a Japanese-language static site with component-based architecture.
+Vite-based LP (Landing Page) development template using BEM + Handlebars. The project is a Japanese-language static site with component-based architecture.
 
 ## Commands
 
@@ -28,9 +28,9 @@ yarn _prettier  # Check only (Prettier)
 
 ### Source Structure (`src/`)
 - **HTML pages**: `index.html`, `_components.html`, `contact/index.html`, `contact/complete.html`
-- **`components/`**: Handlebars partials loaded via `{{> partial-name}}`. File names match CSS class names (e.g., `p-header.html` → `.p-header`)
+- **`components/`**: Handlebars partials loaded via `{{> partial-name}}`. File names match CSS class names (e.g., `header.html` → `.header`)
 - **`data/meta.json`**: Per-page metadata (title, description, ogImage) keyed by page path. Injected into templates as `{{page.title}}`, etc.
-- **`assets/styles/`**: FLOCSS structure — `foundation/`, `global/`, `layouts/`, `components/`, `projects/`, `utilities/`. Entry: `style.scss` uses glob imports (`@use "components/**"`)
+- **`assets/styles/`**: `foundation/` (reset/base), `global/` (variables/mixins), `blocks/` (all BEM blocks). Entry: `style.scss` uses glob imports (`@use "blocks/**"`)
 - **`assets/js/`**: ES modules. Entry: `script.js` imports feature modules (`_drawer.js`, `_mv-slider.js`, `_viewport.js`, `_form-validation.js`)
 - **`public/`**: Static assets copied as-is (OGP, favicon). No hash in URLs
 - **`assets/images/`**: Content images. Build adds hash for cache busting
@@ -49,14 +49,15 @@ yarn _prettier  # Check only (Prettier)
 Full details in [doc/coding-guidelines.md](doc/coding-guidelines.md).
 
 ### CSS/SCSS — Critical Rules
-- **FLOCSS prefixes**: `l-` (layout), `c-` (component), `p-` (project), `u-` (utility)
-- **BEM elements must be flat** — never nest `&__element`. Write `.c-card__item {}` as a separate rule, not inside `.c-card {}`
+- **BEM naming**: Block, Element (`__`), Modifier (`--`). No FLOCSS prefixes
+- **BEM elements must be flat** — never nest `&__element`. Write `.card__item {}` as a separate rule, not inside `.card {}`
 - **Nesting allowed only for**: pseudo-elements/classes (`&:hover`, `&::before`), state classes (`&.is-open`), and `@include mq()`
 - **Units**: Use `calc(value * var(--to-rem))` for rem conversion, never raw `px`
 - **Logical properties**: Use `margin-block-start`, `padding-inline`, etc. instead of physical properties
-- **Modifiers**: `.c-button.c-button--large {}` (not `&--large`)
+- **Modifiers**: `.button.button--large {}` (not `&--large`)
 - **Breakpoints** (mobile-first): `@include mq("sm"|"md"|"lg"|"xl")` — sm:600px, md:768px, lg:1024px, xl:1440px
 - **Global imports**: Each SCSS file uses `@use "../global" as *;`
+- **Utility classes**: `u-` prefix retained for utility-only classes (e.g., `.u-sr-only`, `.u-text__marker`)
 
 ### HTML
 - Semantic HTML elements required

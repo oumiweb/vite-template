@@ -1,0 +1,13 @@
+@use "../global" as *;
+
+.contact-page {
+  margin-top: var(--header-height);
+}
+
+.contact {
+  padding-block: calc(72 * var(--to-rem));
+}
+
+.contact__form {
+  margin-top: calc(64 * var(--to-rem));
+}
