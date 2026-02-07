@@ -1,6 +1,6 @@
 @use "../global" as *;
 
-.p-mv {
+.mv {
   position: relative;
   z-index: 1;
   width: 100%;
@@ -12,14 +12,14 @@
   }
 }
 
-.p-mv__inner {
+.mv__inner {
   position: relative;
   width: 100%;
   height: 100%;
   min-height: inherit;
 }
 
-.p-mv__title-wrap {
+.mv__title-wrap {
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -36,7 +36,7 @@
   container-type: inline-size;
 }
 
-.p-mv__main-title {
+.mv__main-title {
   font-size: calc(32 * var(--to-rem));
   font-weight: var(--fw-bold);
   line-height: 1.2;
@@ -48,7 +48,7 @@
   }
 }
 
-.p-mv__sub-title {
+.mv__sub-title {
   font-size: calc(18 * var(--to-rem));
   line-height: 1.6;
   text-shadow: 0 1px 2px oklch(from var(--color-black) l c h / 30%);
@@ -58,30 +58,30 @@
   }
 }
 
-.p-mv__splide {
+.mv__splide {
   width: 100%;
   height: 100%;
 }
 
-.p-mv__splide .splide__track {
+.mv__splide .splide__track {
   height: 100%;
 }
 
-.p-mv__splide .splide__list {
+.mv__splide .splide__list {
   height: 100%;
 }
 
-.p-mv__splide .splide__slide {
+.mv__splide .splide__slide {
   height: 100%;
 }
 
-.p-mv__splide .splide__slide-image {
+.mv__splide .splide__slide-image {
   width: 100%;
   height: 100%;
 }
 
-.p-mv__splide .splide__slide-image picture,
-.p-mv__splide .splide__slide-image img {
+.mv__splide .splide__slide-image picture,
+.mv__splide .splide__slide-image img {
   display: block;
   width: 100%;
   height: 100%;

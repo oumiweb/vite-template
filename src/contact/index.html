@@ -3,33 +3,33 @@
   {{> head }}
 
   <body>
-    {{> p-header}}
-    <main class="l-contact">
-      <section class="p-contact">
-        <div class="p-contact__inner l-inner">
-          <h2 class="p-contact__title c-section-title" data-title="contact">contact</h2>
-          <div class="p-contact__form">
-            <form action="" class="p-form" novalidate>
-              <div class="p-form__item">
-                <label for="name" class="p-form__label p-form__label--required">お名前</label>
-                <input type="text" id="name" name="name" class="p-form__input" placeholder="例：山田 太郎" required />
+    {{> header}}
+    <main class="contact-page">
+      <section class="contact">
+        <div class="contact__inner inner">
+          <h2 class="contact__title section-title" data-title="contact">contact</h2>
+          <div class="contact__form">
+            <form action="" class="form" novalidate>
+              <div class="form__item">
+                <label for="name" class="form__label form__label--required">お名前</label>
+                <input type="text" id="name" name="name" class="form__input" placeholder="例：山田 太郎" required />
               </div>
-              <div class="p-form__item">
-                <label for="email" class="p-form__label p-form__label--required">メールアドレス</label>
-                <input type="email" id="email" name="email" class="p-form__input" placeholder="例：example@example.com" required />
+              <div class="form__item">
+                <label for="email" class="form__label form__label--required">メールアドレス</label>
+                <input type="email" id="email" name="email" class="form__input" placeholder="例：example@example.com" required />
               </div>
-              <div class="p-form__item">
-                <label for="tel" class="p-form__label">電話番号</label>
-                <input type="tel" id="tel" name="tel" class="p-form__input" placeholder="例：090-1234-5678" />
+              <div class="form__item">
+                <label for="tel" class="form__label">電話番号</label>
+                <input type="tel" id="tel" name="tel" class="form__input" placeholder="例：090-1234-5678" />
               </div>
-              <div class="p-form__item">
-                <label for="company" class="p-form__label">会社名</label>
-                <input type="text" id="company" name="company" class="p-form__input" placeholder="例：株式会社 山田" />
+              <div class="form__item">
+                <label for="company" class="form__label">会社名</label>
+                <input type="text" id="company" name="company" class="form__input" placeholder="例：株式会社 山田" />
               </div>
-              <div class="p-form__item">
-                <label for="prefecture" class="p-form__label">都道府県</label>
-                <div class="p-form__select-wrap">
-                  <select id="prefecture" name="prefecture" class="p-form__select">
+              <div class="form__item">
+                <label for="prefecture" class="form__label">都道府県</label>
+                <div class="form__select-wrap">
+                  <select id="prefecture" name="prefecture" class="form__select">
                     <option value="">選択してください</option>
                     <optgroup label="北海道・東北地方">
                       <option value="hokkaido">北海道</option>
@@ -103,52 +103,52 @@
                   </select>
                 </div>
               </div>
-              <div class="p-form__item">
-                <label for="inquiry-type" class="p-form__label p-form__label--required">お問い合わせ種別</label>
-                <div class="p-form__radio-group">
-                  <label class="p-form__radio">
+              <div class="form__item">
+                <label for="inquiry-type" class="form__label form__label--required">お問い合わせ種別</label>
+                <div class="form__radio-group">
+                  <label class="form__radio">
                     <input type="radio" name="inquiry-type" value="service" required />
-                    <span class="p-form__radio-text">サービスについて</span>
+                    <span class="form__radio-text">サービスについて</span>
                   </label>
-                  <label class="p-form__radio">
+                  <label class="form__radio">
                     <input type="radio" name="inquiry-type" value="price" required />
-                    <span class="p-form__radio-text">料金について</span>
+                    <span class="form__radio-text">料金について</span>
                   </label>
-                  <label class="p-form__radio">
+                  <label class="form__radio">
                     <input type="radio" name="inquiry-type" value="support" required />
-                    <span class="p-form__radio-text">サポート</span>
+                    <span class="form__radio-text">サポート</span>
                   </label>
-                  <label class="p-form__radio">
+                  <label class="form__radio">
                     <input type="radio" name="inquiry-type" value="other" required />
-                    <span class="p-form__radio-text">その他</span>
+                    <span class="form__radio-text">その他</span>
                   </label>
                 </div>
               </div>
-              <div class="p-form__item">
-                <label for="message" class="p-form__label p-form__label--required">お問い合わせ内容</label>
+              <div class="form__item">
+                <label for="message" class="form__label form__label--required">お問い合わせ内容</label>
                 <textarea
                   id="message"
                   name="message"
                   rows="8"
-                  class="p-form__textarea"
+                  class="form__textarea"
                   required
                   placeholder="お問い合わせ内容をご記入ください"
                 ></textarea>
               </div>
-              <div class="p-form__item">
-                <label class="p-form__checkbox">
+              <div class="form__item">
+                <label class="form__checkbox">
                   <input type="checkbox" name="privacy" value="agree" required />
-                  <span class="p-form__checkbox-text"> <a href="#" class="p-form__link">プライバシーポリシー</a>に同意する </span>
+                  <span class="form__checkbox-text"> <a href="#" class="form__link">プライバシーポリシー</a>に同意する </span>
                 </label>
               </div>
-              <div class="p-form__button-wrap">
-                <button type="submit" class="c-button" data-color="black">送信する</button>
+              <div class="form__button-wrap">
+                <button type="submit" class="button" data-color="black">送信する</button>
               </div>
             </form>
           </div>
         </div>
       </section>
     </main>
-    {{> p-footer}}
+    {{> footer}}
   </body>
 </html>

@@ -23,11 +23,11 @@ function showError(field, message) {
   removeError(field);
 
   const errorElement = document.createElement("span");
-  errorElement.className = "p-form__error";
+  errorElement.className = "form__error";
   errorElement.textContent = message;
   errorElement.setAttribute("role", "alert");
 
-  const formItem = field.closest(".p-form__item");
+  const formItem = field.closest(".form__item");
   if (formItem) {
     formItem.appendChild(errorElement);
   }
@@ -41,7 +41,7 @@ function showError(field, message) {
  * @param {HTMLElement} field - フィールド要素
  */
 function removeError(field) {
-  const formItem = field.closest(".p-form__item");
+  const formItem = field.closest(".form__item");
   if (formItem) {
     const errorElement = formItem.querySelector(".p-form__error");
     if (errorElement) {
@@ -244,7 +244,7 @@ function setupGroupFieldEvents(field, form) {
  * フォームバリデーションの初期化
  */
 function initFormValidation() {
-  const form = document.querySelector(".p-form");
+  const form = document.querySelector(".form");
   if (!form) return;
 
   // 送信時のバリデーション

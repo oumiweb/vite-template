@@ -3,7 +3,7 @@
 // 参考記事
 // https://www.tak-dcxi.com/article/css-only-details-animation-2025
 
-.c-accordion {
+.accordion {
   // 背景色やらテキストの色やらを変数で管理
   --_text-color: var(--color-text);
   --_background-default: var(--color-white);
@@ -31,7 +31,7 @@
   }
 }
 
-.c-accordion__summary {
+.accordion__summary {
   display: block grid;
   grid-template: ". icon" / 1fr max-content;
   gap: calc(16 * var(--to-rem));
@@ -77,7 +77,7 @@
   }
 }
 
-.c-accordion[open] .c-accordion__summary {
+.accordion[open] .accordion__summary {
   color: var(--_text-color-opened);
   background-color: var(--_background-opened);
 
@@ -86,7 +86,7 @@
   }
 }
 
-.c-accordion__contents {
+.accordion__contents {
   padding-block: calc(16 * var(--to-rem));
   padding-inline: calc(24 * var(--to-rem));
 }

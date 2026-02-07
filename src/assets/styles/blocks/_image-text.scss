@@ -3,7 +3,7 @@
 // 参考記事
 // https://deep-space.blue/web/2999
 
-.c-image-text {
+.image-text {
   display: grid;
   grid-template: "image" auto "text" auto / 1fr;
   row-gap: calc(24 * var(--to-rem));
@@ -17,7 +17,7 @@
   }
 }
 
-.c-image-text.c-image-text--reverse {
+.image-text.image-text--reverse {
   @include mq(md) {
     grid-template: "margin text gutter image" auto / max(calc((100% - var(--inner)) / 2), calc(32 * var(--to-rem))) 1fr calc(16 * var(--to-rem)) calc(
         600 / 1440 * 100%
@@ -25,29 +25,29 @@
   }
 }
 
-.c-image-text.c-image-text--overlap {
+.image-text.image-text--overlap {
   @include mq(md) {
     grid-template: "image text margin" auto / calc(600 / 1440 * 100%) 1fr max(calc((100% - var(--inner)) / 2), calc(32 * var(--to-rem)));
   }
 }
 
-.c-image-text.c-image-text--overlap.c-image-text--reverse {
+.image-text.image-text--overlap.image-text--reverse {
   @include mq(md) {
     grid-template: "margin text image" auto / max(calc((100% - var(--inner)) / 2), calc(32 * var(--to-rem))) 1fr calc(600 / 1440 * 100%);
   }
 }
 
-.c-image-text__image {
+.image-text__image {
   grid-area: image;
 }
 
-.c-image-text__image img {
+.image-text__image img {
   width: 100%;
   height: calc(300 * var(--to-rem));
   object-fit: cover;
 }
 
-.c-image-text__text {
+.image-text__text {
   grid-area: text;
   max-width: var(--inner-sp);
   padding: var(--padding-inner);
@@ -60,7 +60,7 @@
   }
 }
 
-.c-image-text.c-image-text--overlap .c-image-text__text {
+.image-text.image-text--overlap .image-text__text {
   padding: var(--padding-inner);
   background: var(--color-white);
 
@@ -70,7 +70,7 @@
   }
 }
 
-.c-image-text.c-image-text--overlap.c-image-text--reverse .c-image-text__text {
+.image-text.image-text--overlap.image-text--reverse .image-text__text {
   @include mq(md) {
     padding: calc(20 * var(--to-rem)) calc(20 * var(--to-rem)) calc(20 * var(--to-rem)) 0;
     margin-right: calc(-100 * var(--to-rem));

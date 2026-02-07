@@ -1,6 +1,6 @@
 @use "../global" as *;
 
-.p-card-list {
+.card-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(calc(280 * var(--to-rem)), 1fr));
   gap: calc(32 * var(--to-rem));

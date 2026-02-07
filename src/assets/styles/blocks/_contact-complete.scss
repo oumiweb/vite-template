@@ -1,12 +1,12 @@
 @use "../global" as *;
 
 // 送信完了ページ用のスタイル
-.p-contact__complete {
+.contact__complete {
   padding-block: calc(80 * var(--to-rem));
   text-align: center;
 }
 
-.p-contact__complete-title {
+.contact__complete-title {
   font-size: calc(32 * var(--to-rem));
   font-weight: var(--fw-bold);
 
@@ -15,7 +15,7 @@
   }
 }
 
-.p-contact__complete-text {
+.contact__complete-text {
   margin-block-start: calc(30 * var(--to-rem));
   font-size: calc(16 * var(--to-rem));
   line-height: 1.8;
@@ -26,7 +26,7 @@
   }
 }
 
-.p-contact__complete-button {
+.contact__complete-button {
   margin-block-start: calc(50 * var(--to-rem));
   margin-inline: auto;
 }

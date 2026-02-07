@@ -1,6 +1,6 @@
 @use "../global" as *;
 
-.c-section-title {
+.section-title {
   position: relative;
   font-family: var(--title-font-family);
   font-size: calc(40 * var(--to-rem));
@@ -12,19 +12,19 @@
   }
 }
 
-.c-section-title[data-position="center"] {
+.section-title[data-position="center"] {
   text-align: center;
 }
 
-.c-section-title[data-position="left"] {
+.section-title[data-position="left"] {
   text-align: left;
 }
 
-.c-section-title[data-position="right"] {
+.section-title[data-position="right"] {
   text-align: right;
 }
 
-.c-section-title::before {
+.section-title::before {
   position: absolute;
   top: 50%;
   z-index: -1;
@@ -37,17 +37,17 @@
   }
 }
 
-.c-section-title[data-position="center"]::before {
+.section-title[data-position="center"]::before {
   left: 50%;
   translate: -50% -50%;
 }
 
-.c-section-title[data-position="left"]::before {
+.section-title[data-position="left"]::before {
   left: 0;
   translate: 0 -50%;
 }
 
-.c-section-title[data-position="right"]::before {
+.section-title[data-position="right"]::before {
   right: 0;
   translate: 0 -50%;
 }

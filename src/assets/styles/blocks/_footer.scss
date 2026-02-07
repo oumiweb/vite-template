@@ -1,6 +1,6 @@
 @use "../global" as *;
 
-.p-footer {
+.footer {
   padding: calc(40 * var(--to-rem)) 0;
   background-color: var(--color-primary);
 
@@ -9,7 +9,7 @@
   }
 }
 
-.p-footer__content {
+.footer__content {
   display: flex;
   flex-direction: column;
   gap: calc(20 * var(--to-rem));
@@ -22,7 +22,7 @@
   }
 }
 
-.p-footer__logo {
+.footer__logo {
   width: 100%;
   max-width: calc(40 * var(--to-rem));
 
@@ -32,7 +32,7 @@
   }
 }
 
-.p-footer__nav-list {
+.footer__nav-list {
   display: flex;
   flex-wrap: wrap;
   gap: calc(15 * var(--to-rem)) calc(30 * var(--to-rem));
@@ -43,19 +43,19 @@
   }
 }
 
-.p-footer__nav-item a {
+.footer__nav-item a {
   color: var(--color-white);
   text-decoration: none;
   transition: opacity 0.3s;
 }
 
 @media (any-hover: hover) {
-  .p-footer__nav-item a:hover {
+  .footer__nav-item a:hover {
     opacity: 0.7;
   }
 }
 
-.p-footer__bottom {
+.footer__bottom {
   margin-top: calc(30 * var(--to-rem));
   text-align: center;
 
@@ -64,7 +64,7 @@
   }
 }
 
-.p-footer__copyright {
+.footer__copyright {
   font-size: calc(14 * var(--to-rem));
   color: var(--color-white);
 }

@@ -1,6 +1,6 @@
 @use "../global" as *;
 
-.l-inner {
+.inner {
   max-width: calc(var(--inner-sp) + var(--padding-inner) * 2);
   padding-inline: var(--padding-inner);
   margin-inline: auto;

@@ -1,6 +1,6 @@
 @use "../global" as *;
 
-.l-top__about {
+.top-page__about {
   margin-block-start: calc(40 * var(--to-rem));
 
   @include mq(md) {

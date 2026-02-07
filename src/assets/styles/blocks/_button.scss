@@ -1,6 +1,6 @@
 @use "../global" as *;
 
-.c-button {
+.button {
   position: relative;
   display: inline-block;
   padding: calc(14 * var(--to-rem)) calc(60 * var(--to-rem));
@@ -35,7 +35,7 @@
   }
 }
 
-.c-button[data-color="black"] {
+.button[data-color="black"] {
   color: var(--color-white);
   background-color: var(--color-black);
   border-color: var(--color-black);

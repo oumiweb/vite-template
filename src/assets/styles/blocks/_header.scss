@@ -1,6 +1,9 @@
 @use "../global" as *;
 
-.p-header {
+.header {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-header);
   height: var(--header-height);
   background-color: var(--color-white);
   box-shadow: 0 0 25px oklch(from var(--color-black) l c h / 10%);
@@ -10,14 +13,14 @@
   }
 }
 
-.p-header__inner {
+.header__inner {
   display: flex;
   justify-content: space-between;
   height: inherit;
   padding-inline-start: calc(16 * var(--to-rem));
 }
 
-.p-header__logo {
+.header__logo {
   width: 100%;
   max-width: calc(40 * var(--to-rem));
   height: inherit;
@@ -27,19 +30,19 @@
   }
 }
 
-.p-header__logo a {
+.header__logo a {
   display: flex;
   align-items: center;
   height: inherit;
 }
 
-.p-header__logo img {
+.header__logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.p-header__nav {
+.header__nav {
   position: relative;
   display: none;
   height: inherit;
@@ -51,25 +54,25 @@
   }
 }
 
-.p-header__nav-list {
+.header__nav-list {
   display: flex;
   justify-content: flex-end;
   height: inherit;
 }
 
-.p-header__nav-item,
-.p-header__nav-modal-wrap {
+.header__nav-item,
+.header__nav-modal-wrap {
   height: inherit;
 }
 
-.p-header__nav-item.p-header__nav-item--contact {
+.header__nav-item.header__nav-item--contact {
   display: flex;
   align-items: center;
   margin-inline-start: calc(15 * var(--to-rem));
 }
 
-.p-header__nav-item > a,
-.p-header__nav-modal-wrap > p {
+.header__nav-item > a,
+.header__nav-modal-wrap > p {
   display: flex;
   align-items: center;
   height: inherit;
@@ -81,17 +84,17 @@
   color: var(--color-text);
 }
 
-.p-header__nav-modal-wrap {
+.header__nav-modal-wrap {
   position: relative;
 }
 
-.p-header__nav-modal-wrap > p {
+.header__nav-modal-wrap > p {
   transition:
     color var(--duration),
     opacity var(--duration);
 }
 
-.p-header__nav-modal {
+.header__nav-modal {
   position: absolute;
   top: calc(80 * var(--to-rem));
   left: calc(-15 * var(--to-rem));
@@ -108,14 +111,14 @@
 }
 
 @media (any-hover: hover) {
-  .p-header__nav-modal-wrap:hover > .p-header__nav-modal {
+  .header__nav-modal-wrap:hover > .header__nav-modal {
     visibility: visible;
     opacity: 1;
     transform: rotateX(0deg);
   }
 }
 
-.p-header__nav-modal-item a {
+.header__nav-modal-item a {
   position: relative;
   display: flex;
   gap: calc(24 * var(--to-rem));
@@ -128,7 +131,7 @@
   color: var(--color-text);
 }
 
-.p-header__nav-modal-item a::after {
+.header__nav-modal-item a::after {
   display: inline-block;
   width: 8px;
   height: 8px;
@@ -140,14 +143,14 @@
 }
 
 @media (any-hover: hover) {
-  .p-header__nav-modal-item a:hover {
+  .header__nav-modal-item a:hover {
     @include mq("md") {
       opacity: 0.8;
     }
   }
 }
 
-.p-header__nav-item.p-header__nav-item--contact a {
+.header__nav-item.header__nav-item--contact a {
   position: relative;
   padding-inline: calc(50 * var(--to-rem));
   color: var(--color-white);
@@ -174,7 +177,7 @@
   }
 }
 
-.p-header__hamburger {
+.header__hamburger {
   position: relative;
   z-index: 999;
   width: calc(64 * var(--to-rem));
@@ -192,7 +195,7 @@
   }
 }
 
-.p-header__hamburger span {
+.header__hamburger span {
   position: relative;
   left: 50%;
   display: block;
@@ -217,7 +220,7 @@
   }
 }
 
-.p-header__hamburger.is-open span {
+.header__hamburger.is-open span {
   &:nth-of-type(1) {
     top: 0;
     rotate: 45deg;
@@ -233,7 +236,7 @@
   }
 }
 
-.p-header__drawer {
+.header__drawer {
   position: absolute;
   inset: 0;
   z-index: 900;
@@ -251,18 +254,18 @@
   }
 }
 
-.p-header__drawer-item {
+.header__drawer-item {
   border-bottom: 1px solid var(--color-white);
 }
 
-.p-header__drawer-item.p-header__drawer-item--contact {
+.header__drawer-item.header__drawer-item--contact {
   margin-top: calc(40 * var(--to-rem));
   margin-left: calc(32 * var(--to-rem));
   border-bottom: none;
 }
 
-.p-header__drawer-item > a,
-.p-header__drawer-accordion-title {
+.header__drawer-item > a,
+.header__drawer-accordion-title {
   display: block;
   padding: calc(20 * var(--to-rem)) calc(32 * var(--to-rem));
   font-size: calc(14 * var(--to-rem));
@@ -272,12 +275,12 @@
   cursor: pointer;
 }
 
-.p-header__drawer-accordion-title {
+.header__drawer-accordion-title {
   width: 100%;
   text-align: left;
 }
 
-.p-header__drawer-item.p-header__drawer-item--contact a {
+.header__drawer-item.header__drawer-item--contact a {
   position: relative;
   width: 100%;
   max-width: calc(180 * var(--to-rem));
@@ -302,12 +305,12 @@
 }
 
 @media (any-hover: hover) {
-  .p-header__drawer-item.p-header__drawer-item--contact a:hover::after {
+  .header__drawer-item.header__drawer-item--contact a:hover::after {
     translate: 4px -50%;
   }
 }
 
-.p-header__drawer-accordion-title {
+.header__drawer-accordion-title {
   position: relative;
 
   &::before,
@@ -334,17 +337,17 @@
   }
 }
 
-.p-header__drawer-accordion-title.is-open::after {
+.header__drawer-accordion-title.is-open::after {
   rotate: revert;
   translate: 0 -50%;
 }
 
-.p-header__drawer-accordion-list {
+.header__drawer-accordion-list {
   display: none;
   padding-bottom: calc(10 * var(--to-rem));
 }
 
-.p-header__drawer-accordion-list a {
+.header__drawer-accordion-list a {
   display: block;
   padding: calc(10 * var(--to-rem)) calc(32 * var(--to-rem));
   font-size: calc(12 * var(--to-rem));
