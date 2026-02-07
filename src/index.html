@@ -5,47 +5,43 @@
   <body>
     {{> header}}
     <main class="top-page">
-      {{> mv}}
-
-      <section class="top-about">
-        <div class="top-about__inner inner">
-          <p class="top-about__label">ハマナビサービスについて</p>
-          <h2 class="top-about__title">当日でもご利用可能！横浜の旅を楽しむお手伝いをいたします</h2>
-          <p class="top-about__text">
-            ホテル・レストラン・体験アクティビティサービスの予約代行から、駐車場の空き予約代行やトランク預かりサービス<br />
-            など、外国人観光客が旅行をより楽しむお手伝い、お困りごと、ご要望サポートを可能にするコンシェルジュサービスです。<br />
-            英語対応可能。直接話したい方のための電話窓口やSNS/チャット対応も可能！
-          </p>
-
-          <div class="top-about__images">
-            <img class="top-about__line" src="/assets/images/about_line.webp" width="1200" height="40" alt="" loading="lazy" />
-            <div class="top-about__image top-about__image--01">
-              <picture>
-                <source srcset="/assets/images/about_01.webp" type="image/webp" />
-                <img src="/assets/images/about_01.png" width="320" height="213" alt="横浜みなとみらいの風景" loading="lazy" />
-              </picture>
+      <section class="mv">
+        <div class="mv__inner">
+          <div class="mv__title-wrap">
+            <h2 class="mv__main-title">メインタイトルだよ</h2>
+            <p class="mv__sub-title">
+              ここにサブタイトルが入ります。<br />ここにサブタイトルが入ります。ここにサブタイトルが入ります。<br />ここにサブタイトルが入ります。
+            </p>
+          </div>
+          <div class="mv__splide splide js-mv-splide" aria-label="main-visual">
+            <div class="splide__track">
+              <ul class="splide__list">
+                <li class="splide__slide">
+                  <div class="splide__slide-image">
+                    <picture>
+                      <source srcset="/assets/images/image_mv_01.webp" type="image/webp" />
+                      <img src="/assets/images/image_mv_01.png" width="977" height="1800" alt="" fetchpriority="high" />
+                    </picture>
+                  </div>
+                </li>
+                <li class="splide__slide">
+                  <div class="splide__slide-image">
+                    <picture>
+                      <source srcset="/assets/images/image_mv_02.webp" type="image/webp" />
+                      <img src="/assets/images/image_mv_02.png" width="977" height="1800" alt="" />
+                    </picture>
+                  </div>
+                </li>
+                <li class="splide__slide">
+                  <div class="splide__slide-image">
+                    <picture>
+                      <source srcset="/assets/images/image_mv_03.webp" type="image/webp" />
+                      <img src="/assets/images/image_mv_03.png" width="977" height="1800" alt="" />
+                    </picture>
+                  </div>
+                </li>
+              </ul>
             </div>
-            <div class="top-about__image top-about__image--02">
-              <picture>
-                <source srcset="/assets/images/about_02.webp" type="image/webp" />
-                <img src="/assets/images/about_02.png" width="320" height="213" alt="桜と歴史的建造物" loading="lazy" />
-              </picture>
-            </div>
-            <div class="top-about__image top-about__image--03">
-              <picture>
-                <source srcset="/assets/images/about_03.webp" type="image/webp" />
-                <img src="/assets/images/about_03.png" width="320" height="213" alt="船とロープウェイ" loading="lazy" />
-              </picture>
-            </div>
-            <img class="top-about__deco top-about__deco--hata" src="/assets/images/about_hata.webp" width="60" height="60" alt="" loading="lazy" />
-            <img
-              class="top-about__deco top-about__deco--hikouki"
-              src="/assets/images/about_hikouki.webp"
-              width="80"
-              height="40"
-              alt=""
-              loading="lazy"
-            />
           </div>
         </div>
       </section>

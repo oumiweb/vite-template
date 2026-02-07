@@ -1,0 +1,36 @@
+@use "../global" as *;
+
+// data-scroll属性を持つ要素のアニメーション
+// 使い方: <div data-scroll> or <div data-scroll="left">
+//
+// data-scroll        → 下からフェードイン（デフォルト）
+// data-scroll="left" → 左からフェードイン
+// data-scroll="right"→ 右からフェードイン
+
+[data-scroll] {
+  opacity: 0;
+  transition:
+    opacity 0.6s ease,
+    translate 0.6s ease;
+
+  &.is-visible {
+    opacity: 1;
+    translate: 0;
+  }
+}
+
+// デフォルト: 下からフェードイン
+[data-scroll=""],
+[data-scroll]:not([data-scroll="left"], [data-scroll="right"]) {
+  translate: 0 calc(30 * var(--to-rem));
+}
+
+// 左からフェードイン
+[data-scroll="left"] {
+  translate: calc(-30 * var(--to-rem)) 0;
+}
+
+// 右からフェードイン
+[data-scroll="right"] {
+  translate: calc(30 * var(--to-rem)) 0;
+}
